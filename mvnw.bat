@@ -172,3 +172,5 @@ if "%MAVEN_BATCH_PAUSE%" == "on" pause
 if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
 
 exit /B %ERROR_CODE%
+
+@REM java -Dmaven.multiModuleProjectDirectory="E:\Program Files\apache-maven-3.3.9" -classpath "E:\sso\cas-overlay-template\maven\maven-wrapper.jar" org.apache.maven.wrapper.MavenWrapperMain clean package
