@@ -50,3 +50,6 @@ CAS will be available at:
 
 ## External
 Deploy resultant `target/cas.war` to a Servlet container of choice.
+
+
+用 mvn install 打包

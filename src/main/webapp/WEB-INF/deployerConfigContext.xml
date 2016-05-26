@@ -18,11 +18,14 @@
 	<!-- new files by yexinzhou -->
 
     <util:map id="authenticationHandlersResolvers">
-        <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
-        <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
+<!--         <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" /> -->
+<!--         <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" /> -->
+        <entry key-ref="ssoUsersAuthenticationHandler" value-ref="primaryPrincipalResolver" />
 <!--         <entry key-ref="principalBearingCredentialsAuthenticationHandler" value-ref="trustedPrincipalResolver" /> -->
     </util:map>
 
+	<bean id="ssoUsersAuthenticationHandler" class="com.jumore.sso.auth.SSOUsersAuthenticationHandler"></bean>
+	
     <util:list id="authenticationMetadataPopulators">
         <ref bean="successfulHandlerMetaDataPopulator" />
         <ref bean="rememberMeAuthenticationMetaDataPopulator" />
@@ -50,8 +53,17 @@
 
     <alias name="serviceThemeResolver" alias="themeResolver" />
 
-    <alias name="jsonServiceRegistryDao" alias="serviceRegistryDao" />
+<!--     <alias name="jsonServiceRegistryDao" alias="serviceRegistryDao" /> -->
 
+	<bean id="serviceRegistryDao" class="org.jasig.cas.services.InMemoryServiceRegistryDaoImpl"
+            p:registeredServices-ref="registeredServicesList" />
+
+    <util:list id="registeredServicesList">
+        <bean class="org.jasig.cas.services.RegexRegisteredService"
+              p:id="0" p:name="HTTP and IMAP" p:description="Allows HTTP(S) and IMAP(S) protocols"
+              p:serviceId="^(https?|imaps?)://.*" p:evaluationOrder="10000001" />
+    </util:list>
+    
     <alias name="defaultTicketRegistry" alias="ticketRegistry" />
 
     <alias name="ticketGrantingTicketExpirationPolicy" alias="grantingTicketExpirationPolicy" />
