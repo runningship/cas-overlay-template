@@ -18,7 +18,7 @@
 	<!-- new files by yexinzhou -->
 
     <util:map id="authenticationHandlersResolvers">
-<!--         <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" /> -->
+        <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
 <!--         <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" /> -->
         <entry key-ref="ssoUsersAuthenticationHandler" value-ref="primaryPrincipalResolver" />
 <!--         <entry key-ref="principalBearingCredentialsAuthenticationHandler" value-ref="trustedPrincipalResolver" /> -->
